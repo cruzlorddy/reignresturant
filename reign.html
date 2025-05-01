@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REIGN | Restaurant • Arcade • Events</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF0000',
+                        secondary: '#FFFFFF',
+                        dark: '#0F0F0F',
+                    },
+                    fontFamily: {
+                        sans: ['Bebas Neue', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0F0F0F;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(255,0,0,0.5) 100%), 
+                        url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .arcade-bg {
+            background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(255,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .restaurant-bg {
+            background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(255,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .events-bg {
+            background: linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(255,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(255,0,0,0.7), 0 0 20px rgba(255,0,0,0.5);
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 15px rgba(255,0,0,0.5);
+        }
+        
+        .glow-hover:hover {
+            box-shadow: 0 0 25px rgba(255,0,0,0.8);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+            }
+        }
+        
+        .tilt {
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .tilt:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+        }
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .skew-section {
+            transform: skewY(-3deg);
+        }
+        
+        .unskew {
+            transform: skewY(3deg);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .text-stroke {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
+        
+        .neon-border {
+            position: relative;
+        }
+        
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #FF0000;
+            border-radius: inherit;
+            animation: neon 1.5s linear infinite;
+            opacity: 0;
+        }
+        
+        .neon-border:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes neon {
+            0% {
+                box-shadow: 0 0 5px #FF0000, inset 0 0 5px #FF0000;
+            }
+            100% {
+                box-shadow: 0 0 20px #FF0000, inset 0 0 10px #FF0000;
+            }
+        }
+        
+        .grid-pattern {
+            background: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .menu-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #FF0000;
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover::after {
+            width: 100%;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+        }
+        
+        @media (max-width: 768px) {
+            .parallax {
+                background-attachment: scroll;
+            }
+            
+            .skew-section {
+                transform: skewY(0);
+            }
+            
+            .unskew {
+                transform: skewY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) both;
+        }
+        
+        .social-animated:hover {
+            color: #FF0000;
+            transform: scale(1.2) rotate(-10deg);
+            transition: all 0.3s cubic-bezier(.23,1.01,.32,1);
+        }
+        
+        .hexagon.glow-animated {
+            box-shadow: 0 0 40px 10px #ff0000, 0 0 80px 20px #ff0000;
+            animation: neonPulse 2s infinite alternate;
+        }
+        @keyframes neonPulse {
+            from { box-shadow: 0 0 40px 10px #ff0000, 0 0 80px 20px #ff0000; }
+            to { box-shadow: 0 0 80px 20px #ff0000, 0 0 120px 40px #ff0000; }
+        }
+        .social-animated:hover {
+            color: #FF0000;
+            transform: scale(1.2) rotate(-10deg);
+            transition: all 0.3s cubic-bezier(.23,1.01,.32,1);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) both;
+        }
+    </style>
+</head>
+<body class="bg-dark text-secondary">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-primary/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="text-4xl font-bold text-primary font-heading tracking-wider">REIGN</div>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="menu-item text-lg font-medium hover:text-primary transition duration-300">HOME</a>
+                    <a href="#restaurant" class="menu-item text-lg font-medium hover:text-primary transition duration-300">RESTAURANT</a>
+                    <a href="#arcade" class="menu-item text-lg font-medium hover:text-primary transition duration-300">ARCADE</a>
+                    <a href="#events" class="menu-item text-lg font-medium hover:text-primary transition duration-300">EVENTS</a>
+                    <a href="#contact" class="menu-item text-lg font-medium hover:text-primary transition duration-300">CONTACT</a>
+                    <a href="#" class="ml-4 bg-primary hover:bg-white text-dark font-bold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105 glow-hover">
+                        BOOK NOW
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark/95 backdrop-blur-lg px-6 py-4 border-t border-primary/20">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-primary text-lg py-2 border-b border-primary/10">HOME</a>
+                <a href="#restaurant" class="text-white hover:text-primary text-lg py-2 border-b border-primary/10">RESTAURANT</a>
+                <a href="#arcade" class="text-white hover:text-primary text-lg py-2 border-b border-primary/10">ARCADE</a>
+                <a href="#events" class="text-white hover:text-primary text-lg py-2 border-b border-primary/10">EVENTS</a>
+                <a href="#contact" class="text-white hover:text-primary text-lg py-2">CONTACT</a>
+                <a href="#" class="mt-4 bg-primary hover:bg-white text-dark font-bold py-2 px-6 rounded-full text-center transition duration-300">
+                    BOOK NOW
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern"></div>
+        <div class="container mx-auto px-6 text-center relative z-10 pt-32">
+            <div class="mb-8">
+                <div class="hexagon bg-primary w-24 h-24 mx-auto flex items-center justify-center glow-box pulse glow-animated" style="min-height:6rem; min-width:6rem;">
+                    <span class="text-6xl md:text-7xl font-bold text-dark flex items-center justify-center" style="line-height:1;">R</span>
+                </div>
+            </div>
+            <h1 class="text-7xl md:text-9xl font-bold mb-4 text-primary font-heading tracking-wide glow">REIGN</h1>
+            <h2 class="text-3xl md:text-4xl font-medium mb-8 text-secondary font-heading tracking-wider">RESTAURANT • ARCADE • EVENTS</h2>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">Where culinary excellence meets cutting-edge entertainment in an electrifying atmosphere.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#restaurant" class="bg-primary hover:bg-white text-dark font-bold py-4 px-10 rounded-full transition duration-300 transform hover:scale-105 glow-hover text-lg">
+                    EXPLORE DINING
+                </a>
+                <a href="#arcade" class="bg-transparent hover:bg-primary text-white hover:text-dark font-bold py-4 px-10 border-2 border-primary rounded-full transition duration-300 transform hover:scale-105 glow-hover text-lg">
+                    DISCOVER GAMES
+                </a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <a href="#about" class="text-primary text-2xl animate-bounce">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-dark skew-section relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern"></div>
+        <div class="container mx-auto px-6 relative z-10 unskew">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-16 lg:mb-0 lg:pr-12">
+                    <h2 class="text-5xl font-bold mb-8 text-primary font-heading tracking-wide">WELCOME TO REIGN</h2>
+                    <div class="h-1 w-20 bg-primary mb-8"></div>
+                    <p class="text-xl mb-8 leading-relaxed">A revolutionary entertainment complex where gourmet dining, state-of-the-art gaming, and world-class event spaces collide in a symphony of excitement.</p>
+                    <p class="text-xl mb-12 leading-relaxed">Our 50,000 sq ft facility redefines nightlife with three distinct experiences under one roof, each designed to ignite your senses and create unforgettable memories.</p>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-dark border border-primary/20 p-6 rounded-xl text-center glow-hover tilt">
+                            <div class="text-primary text-4xl mb-4">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h4 class="font-bold text-xl mb-2">GOURMET DINING</h4>
+                            <p class="text-sm">Michelin-inspired cuisine</p>
+                        </div>
+                        <div class="bg-dark border border-primary/20 p-6 rounded-xl text-center glow-hover tilt">
+                            <div class="text-primary text-4xl mb-4">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h4 class="font-bold text-xl mb-2">150+ GAMES</h4>
+                            <p class="text-sm">Cutting-edge arcade</p>
+                        </div>
+                        <div class="bg-dark border border-primary/20 p-6 rounded-xl text-center glow-hover tilt">
+                            <div class="text-primary text-4xl mb-4">
+                                <i class="fas fa-calendar-star"></i>
+                            </div>
+                            <h4 class="font-bold text-xl mb-2">EVENT SPACES</h4>
+                            <p class="text-sm">For any occasion</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 relative">
+                    <div class="relative floating">
+                        <div class="absolute -inset-4 bg-primary rounded-2xl transform rotate-6 opacity-20"></div>
+                        <div class="relative bg-dark border border-primary/20 rounded-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Reign interior" class="w-full h-auto">
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary rounded-full mix-blend-overlay opacity-10"></div>
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary rounded-full mix-blend-overlay opacity-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section id="restaurant" class="restaurant-bg py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-dark/70"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-4 text-primary font-heading tracking-wide glow">GOURMET DINING</h2>
+                <div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl max-w-3xl mx-auto">Our award-winning chefs craft culinary masterpieces using locally-sourced ingredients and innovative techniques.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl overflow-hidden glow-hover tilt">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Signature Dish" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-primary font-heading tracking-wide">SIGNATURE DISHES</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="mb-6">Experience our chef's most celebrated creations, each telling a story of flavor and craftsmanship.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-bold group">
+                            VIEW MENU
+                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl overflow-hidden glow-hover tilt">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1510626176961-4b57d427c26b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Cocktails" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-primary font-heading tracking-wide">CRAFT COCKTAILS</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="mb-6">Our mixologists create innovative cocktails using premium spirits and house-made ingredients.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-bold group">
+                            VIEW BAR MENU
+                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl overflow-hidden glow-hover tilt">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Private Dining" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-primary font-heading tracking-wide">PRIVATE DINING</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="mb-6">Host your special occasions in our elegant private dining rooms with customized menus.</p>
+                        <a href="#events" class="inline-flex items-center text-primary font-bold group">
+                            LEARN MORE
+                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-block bg-primary hover:bg-white text-dark font-bold py-4 px-12 rounded-full transition duration-300 transform hover:scale-105 glow-hover text-lg">
+                    MAKE A RESERVATION
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arcade Section -->
+    <section id="arcade" class="arcade-bg py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-dark/70"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-4 text-primary font-heading tracking-wide glow">ULTIMATE GAMING EXPERIENCE</h2>
+                <div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl max-w-3xl mx-auto">Over 150 classic and modern arcade games, VR experiences, and competitive gaming tournaments.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl p-8 glow-hover tilt">
+                    <div class="text-primary text-5xl mb-6">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-heading tracking-wide">VR ZONE</h3>
+                    <p class="mb-6">Immerse yourself in cutting-edge virtual reality experiences with our state-of-the-art VR setups.</p>
+                    <div class="flex items-center text-primary">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>30-60 min sessions</span>
+                    </div>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl p-8 glow-hover tilt">
+                    <div class="text-primary text-5xl mb-6">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-heading tracking-wide">COMPETITIVE GAMING</h3>
+                    <p class="mb-6">Join our weekly tournaments featuring popular games with cash prizes and sponsorships.</p>
+                    <div class="flex items-center text-primary">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <span>Every Friday & Saturday</span>
+                    </div>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl p-8 glow-hover tilt">
+                    <div class="text-primary text-5xl mb-6">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-heading tracking-wide">GROUP PACKAGES</h3>
+                    <p class="mb-6">Perfect for birthdays and corporate events with unlimited play packages and private areas.</p>
+                    <div class="flex items-center text-primary">
+                        <i class="fas fa-user-friends mr-2"></i>
+                        <span>Groups of 10+</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-block bg-primary hover:bg-white text-dark font-bold py-4 px-12 rounded-full transition duration-300 transform hover:scale-105 glow-hover text-lg">
+                    VIEW ALL GAMES
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events-bg py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-dark/70"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-4 text-primary font-heading tracking-wide glow">HOST YOUR NEXT EVENT</h2>
+                <div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl max-w-3xl mx-auto">From corporate gatherings to milestone celebrations, our versatile spaces accommodate any occasion.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl overflow-hidden glow-hover tilt">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Corporate Events" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-primary font-heading tracking-wide">CORPORATE EVENTS</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Meeting spaces for 10-200 people</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>AV equipment and tech support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Catering packages available</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-flex items-center text-primary font-bold group">
+                            REQUEST PROPOSAL
+                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl overflow-hidden glow-hover tilt">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Weddings" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-primary font-heading tracking-wide">WEDDINGS & RECEPTIONS</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Elegant ceremony and reception spaces</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Customizable wedding packages</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>In-house catering and bar services</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-flex items-center text-primary font-bold group">
+                            WEDDING BROCHURE
+                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl overflow-hidden glow-hover tilt">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Birthday Parties" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-primary font-heading tracking-wide">BIRTHDAY PARTIES</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Private party rooms available</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Game packages for all ages</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Customizable food and drink options</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="inline-flex items-center text-primary font-bold group">
+                            PARTY PACKAGES
+                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-block bg-primary hover:bg-white text-dark font-bold py-4 px-12 rounded-full transition duration-300 transform hover:scale-105 glow-hover text-lg">
+                    INQUIRE ABOUT EVENTS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-24 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-4 text-primary font-heading tracking-wide glow">OUR GALLERY</h2>
+                <div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl max-w-3xl mx-auto">A visual journey through the Reign experience.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition duration-500 hover:scale-105 glow-hover animate-fadeInUp">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gallery Image" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-dark/90 relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-4 text-primary font-heading tracking-wide glow">WHAT OUR GUESTS SAY</h2>
+                <div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark border border-primary/20 p-8 rounded-2xl glow-hover tilt">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic text-lg">"The food was absolutely incredible! We came for the arcade but stayed for the amazing culinary experience. The staff went above and beyond to make our anniversary special."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-primary">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary">SARAH J.</h4>
+                            <p class="text-sm">Google Review</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-dark border border-primary/20 p-8 rounded-2xl glow-hover tilt">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic text-lg">"We hosted our company retreat at Reign and it was perfect! The event spaces were versatile, the food was delicious, and the arcade provided great team-building opportunities."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-primary">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary">MICHAEL T.</h4>
+                            <p class="text-sm">Facebook Review</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-dark border border-primary/20 p-8 rounded-2xl glow-hover tilt">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic text-lg">"My son's birthday party was a huge success thanks to Reign! The private party room, unlimited game passes, and delicious pizza made it stress-free and fun for everyone."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-primary">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary">LISA M.</h4>
+                            <p class="text-sm">Yelp Review</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0 grid-pattern"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-4 text-primary font-heading tracking-wide glow">GET IN TOUCH</h2>
+                <div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+                <p class="text-xl max-w-3xl mx-auto">We'd love to hear from you! Reach out for reservations, events, or general inquiries.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl p-8 glow-hover tilt">
+                    <h3 class="text-3xl font-bold mb-8 text-primary font-heading tracking-wide">SEND US A MESSAGE</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-dark border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-dark border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <select id="subject" class="w-full px-4 py-3 bg-dark border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <option value="">Select a subject</option>
+                                <option value="reservation">Restaurant Reservation</option>
+                                <option value="event">Event Inquiry</option>
+                                <option value="group">Group Booking</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-dark border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-white text-dark font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:scale-105 glow-hover">
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="bg-dark/90 border border-primary/20 rounded-2xl p-8 glow-hover tilt">
+                    <h3 class="text-3xl font-bold mb-8 text-primary font-heading tracking-wide">CONTACT INFORMATION</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="text-primary text-2xl mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-2">LOCATION</h4>
+                                <p>123 Entertainment District<br>Cityville, ST 12345</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-primary text-2xl mr-4 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-2">PHONE</h4>
+                                <p>(555) 123-4567</p>
+                                <p>Events: (555) 123-4568</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-primary text-2xl mr-4 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-2">EMAIL</h4>
+                                <p>info@reignvenue.com</p>
+                                <p>events@reignvenue.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="text-primary text-2xl mr-4 mt-1">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-2">HOURS</h4>
+                                <p>Monday-Thursday: 11AM - 11PM</p>
+                                <p>Friday-Saturday: 11AM - 1AM</p>
+                                <p>Sunday: 11AM - 10PM</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-xl mb-4 text-primary">FOLLOW US</h4>
+                            <div class="flex space-x-6">
+                                <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full relative">
+        <div class="absolute inset-0 bg-primary/10 z-10"></div>
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2152566272666!2d-73.9878449242396!3d40.74844097138938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689781021304!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-dark/90 border-t border-primary/20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-primary font-heading tracking-wide mb-6">REIGN</h3>
+                    <p class="mb-6">A premier destination combining gourmet dining, thrilling arcade games, and exceptional event spaces.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-primary text-xl social-animated">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold text-primary font-heading tracking-wide mb-6">QUICK LINKS</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="hover:text-primary transition duration-300">Home</a></li>
+                        <li><a href="#restaurant" class="hover:text-primary transition duration-300">Restaurant</a></li>
+                        <li><a href="#arcade" class="hover:text-primary transition duration-300">Arcade</a></li>
+                        <li><a href="#events" class="hover:text-primary transition duration-300">Events</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold text-primary font-heading tracking-wide mb-6">LEGAL</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-primary transition duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition duration-300">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary transition duration-300">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition duration-300">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold text-primary font-heading tracking-wide mb-6">NEWSLETTER</h4>
+                    <p class="mb-4">Subscribe to our newsletter for exclusive offers and updates.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 bg-dark border border-primary/20 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary w-full">
+                        <button type="submit" class="bg-primary text-dark px-4 py-3 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-primary/10 text-center">
+                <p>&copy; 2023 REIGN RESTAURANT, ARCADE & EVENT CENTER. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Form submission (placeholder)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Tilt effect for cards
+        const tiltElements = document.querySelectorAll('.tilt');
+        
+        tiltElements.forEach(el => {
+            const height = el.clientHeight;
+            const width = el.clientWidth;
+            
+            el.addEventListener('mousemove', (e) => {
+                const xVal = e.layerX;
+                const yVal = e.layerY;
+                
+                const yRotation = 5 * ((xVal - width / 2) / width);
+                const xRotation = -5 * ((yVal - height / 2) / height);
+                
+                const transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale(1.02)`;
+                el.style.transform = transform;
+            });
+            
+            el.addEventListener('mouseout', () => {
+                el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Animate section entrances
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gallery lightbox
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                const overlay = document.createElement('div');
+                overlay.style = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;';
+                const bigImg = document.createElement('img');
+                bigImg.src = this.src;
+                bigImg.style = 'max-width:90vw;max-height:90vh;border-radius:1rem;box-shadow:0 0 40px #ff0000;';
+                overlay.appendChild(bigImg);
+                overlay.addEventListener('click', () => document.body.removeChild(overlay));
+                document.body.appendChild(overlay);
+            });
+        });
+    </script>
+</body>
+</html>
